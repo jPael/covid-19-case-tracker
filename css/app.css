@@ -122,3 +122,9 @@ body {
 .sampleContainer {
     background: lightsalmon;
 }
+
+/* @media (max-width: 320.98px) {
+    .canvasContainer {
+        height: 20vh;
+    }
+} */
