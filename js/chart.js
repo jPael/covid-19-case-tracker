@@ -1,3 +1,4 @@
+
 function createChart(
     datas,
     canvas,
@@ -25,25 +26,8 @@ function createChart(
         addedPrevDatesLabel.innerText = date[date.length - 2];
     }
     // console.log(caseCount);
-    var myChart = new Chart(canvas, {
-        type: "line",
-        data: {
-            labels: date,
-            datasets: [
-                {
-                    label: "Cases",
-                    data: caseCount,
-                    lineTension: 0,
-                    fill: true,
-                    backgroundColor: "#58aeff8e",
-                    pointRadius: 5,
-                    borderColor: "#001eff",
-                    borderWidth: 4,
-                    pointBackgroundColor: "#001eff",
-                },
-            ],
-        },
-        options: {
+      const option = {
+  maintainAspectRatio: false,
             responsive: true,
             scales: {
                 yAxes: [
@@ -57,7 +41,27 @@ function createChart(
             legend: {
                 display: true,
             },
-        },
+      }
+      const data = {
+        labels: date,
+            datasets: [
+                {
+                    label: "Cases",
+                    data: caseCount,
+                    lineTension: 0,
+                    fill: true,
+                    backgroundColor: "#58aeff8e",
+                    pointRadius: 5,
+                    borderColor: "#001eff",
+                    borderWidth: 4,
+                    pointBackgroundColor: "#001eff",
+                },
+            ],
+      }
+    var myChart = new Chart(canvas, {
+        type: "line",
+        data: data,
+        options: option,
     });
 
     if (loadingScreen) {
@@ -66,14 +70,4 @@ function createChart(
             loadingScreen.setAttribute("class", "remove");
         }, 300);
     }
-}
-
-function displayWindowSize() {
-    // Get width and height of the window excluding scrollbars
-    var w = document.documentElement.clientWidth;
-    var h = document.documentElement.clientHeight;
-
-    // Display result inside a div element
-    document.getElementById("result").innerHTML =
-        "Width: " + w + ", " + "Height: " + h;
 }

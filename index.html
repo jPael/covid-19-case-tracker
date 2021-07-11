@@ -1,105 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-        <!-- <link
+    <!-- <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
             integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
             crossorigin=""
         /> -->
-        <!-- <script
+    <!-- <script
             src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""
         ></script> -->
-        <!-- <script
+    <!-- <script
             src="https://kit.fontawesome.com/6176765db5.js"
             crossorigin="anonymous"
         ></script> -->
-        <!-- <script src="js/app.js"></script> -->
-        <link rel="stylesheet" href="css/app.css" />
+    <!-- <script src="js/app.js"></script> -->
+    <link rel="stylesheet" href="css/app.css" />
 
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-            crossorigin="anonymous"
-        />
-        <!-- <script
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"
         ></script> -->
-    </head>
-    <body>
-        <header>
-            <nav
-                class="navbar navbar-expand navbar-dark"
-                aria-label="navbar covid 19 tracker"
-            >
-                <div class="container-fluid">
-                    <a href="" class="navbar-brand">Covid19 Tracker</a>
-                    <form class="d-flex">
-                        <input
-                            class="form-control me-2"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                        />
-                        <button class="btn btn-outline-light" type="submit">
-                            Search
-                        </button>
-                    </form>
-                </div>
-            </nav>
-        </header>
-        <main id="content">
-            <div class="container-fluid px-2 py-2" id="notice">
-                <h4>
-                    <span style="color: red">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </span>
-                    These are the current record of Covid 19 cases as of
-                    <span id="latestRecordDateLabel"></span>
-                </h4>
-            </div>
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand navbar-dark"
+        aria-label="navbar covid 19 tracker"
+      >
+        <div class="container-fluid">
+          <a href="" class="navbar-brand">Covid19 Tracker</a>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-light" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
+    </header>
+    <main id="content">
+      <div class="container-fluid px-2 py-2" id="notice">
+        <h4>
+          <span style="color: red">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+          These are the current record of Covid 19 cases as of
+          <span id="latestRecordDateLabel"></span>
+        </h4>
+      </div>
 
-            <div class="row row-cols-1 row-cols-sm-2 g-3 p-3">
-                <div class="col">
-                    <div class="card shadow">
-                        <div class="caseLabel">
-                            <h3>
-                                Total Confirmed Cases:
-                                <span id="confirmedCaseCount">Loading</span>
-                                <div>
-                                    <span
-                                        class="caseAddedLabel"
-                                        id="addedConfirmedCase"
-                                        >+0</span
-                                    >
-                                    <h5 style="display: inline">
-                                        <span> was added on </span>
-                                        <span id="confirmedCasePrevDate"></span>
-                                    </h5>
-                                </div>
-                            </h3>
-                        </div>
-                        <div class="canvasContainer">
-                            <div class="show">
-                                <div class="loading_animation"></div>
-                            </div>
-                            <canvas
-                                class="my-4 w-100"
-                                id="totalCasesChart"
-                            ></canvas>
-                        </div>
-                        <!-- collapse container -->
-                        <!-- <button
+      <div class="row row-cols-1 row-cols-sm-2 g-3 p-3">
+        <div class="col">
+          <div class="card shadow">
+            <div class="caseLabel">
+              <h3>
+                Total Confirmed Cases:
+                <span id="confirmedCaseCount">Loading</span>
+                <div>
+                  <span class="caseAddedLabel" id="addedConfirmedCase">+0</span>
+                  <h5 style="display: inline">
+                    <span> was added on </span>
+                    <span id="confirmedCasePrevDate"></span>
+                  </h5>
+                </div>
+              </h3>
+            </div>
+            <div class="canvasContainer">
+              <div class="show">
+                <div class="loading_animation"></div>
+              </div>
+              <!--
+                                width="900"
+                                height="380"
+-->
+              <canvas class="my-4 w-100" id="totalCasesChart"></canvas>
+            </div>
+            <!-- collapse container -->
+            <!-- <button
                             class="btn btn-primary"
                             type="button"
                             data-toggle="collapse"
@@ -112,128 +109,116 @@
                         <div class="collapse" id="collapseExample">
                             <div class="card card-body"></div>
                         </div> -->
-                        <!-- end  -->
-                    </div>
+            <!-- end  -->
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow">
+            <div class="caseLabel">
+              <h3>
+                Total Active Cases:
+                <span id="activeCaseCount">Loading</span>
+                <div>
+                  <span class="caseAddedLabel" id="addedActiveCase">+0</span>
+                  <h5 style="display: inline">
+                    <span> was added on </span>
+                    <span id="activeCasePrevDate"></span>
+                  </h5>
                 </div>
-                <div class="col">
-                    <div class="card shadow">
-                        <div class="caseLabel">
-                            <h3>
-                                Total Active Cases:
-                                <span id="activeCaseCount">Loading</span>
-                                <div>
-                                    <span
-                                        class="caseAddedLabel"
-                                        id="addedActiveCase"
-                                        >+0</span
-                                    >
-                                    <h5 style="display: inline">
-                                        <span> was added on </span>
-                                        <span id="activeCasePrevDate"></span>
-                                    </h5>
-                                </div>
-                            </h3>
-                        </div>
-                        <div class="canvasContainer">
-                            <div class="show">
-                                <div class="loading_animation"></div>
-                            </div>
-                            <canvas
-                                class="my-4 w-100"
-                                id="totalActiveCasesChart"
-                            ></canvas>
-                        </div>
-                    </div>
-                </div>
+              </h3>
             </div>
-
-            <div class="row row-cols-1 row-cols-sm-2 g-3 p-3">
-                <div class="col">
-                    <div class="card shadow">
-                        <div class="caseLabel">
-                            <h3>
-                                Total Death:
-                                <span id="deathCaseCount">Loading</span>
-                                <div>
-                                    <span
-                                        class="caseAddedLabel"
-                                        id="addedDeathCase"
-                                        >+0</span
-                                    >
-                                    <h5 style="display: inline">
-                                        <span> was added on </span>
-                                        <span id="deathCasePrevDate"></span>
-                                    </h5>
-                                </div>
-                            </h3>
-                        </div>
-                        <div class="canvasContainer">
-                            <div class="show">
-                                <div class="loading_animation"></div>
-                            </div>
-                            <canvas
-                                class="my-4 w-100"
-                                id="totalDeathChart"
-                            ></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow">
-                        <div class="caseLabel">
-                            <h3>
-                                Total Recovery:
-                                <span id="recoveryCaseCount">Loading</span>
-                                <div>
-                                    <span
-                                        class="caseAddedLabel"
-                                        id="addedRecoveryCase"
-                                        >+0</span
-                                    >
-                                    <h5 style="display: inline">
-                                        <span> was added on </span>
-                                        <span id="recoveryCasePrevDate"></span>
-                                    </h5>
-                                </div>
-                            </h3>
-                        </div>
-                        <div class="canvasContainer">
-                            <div class="show">
-                                <div class="loading_animation"></div>
-                            </div>
-                            <canvas
-                                class="my-4 w-100"
-                                id="totalRecoveryChart"
-                            ></canvas>
-                        </div>
-                    </div>
-                </div>
+            <div class="canvasContainer">
+              <div class="show">
+                <div class="loading_animation"></div>
+              </div>
+              <canvas
+                class="my-4 w-100"
+                id="totalActiveCasesChart"
+              ></canvas>
             </div>
-        </main>
-        <script
-            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"
-        ></script>
-        <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
-        <script
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"
-        ></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+          </div>
+        </div>
+      </div>
 
-        <script src="js/chart.js"></script>
-        <script src="js/dashboard.js"></script>
-    </body>
+      <div class="row row-cols-1 row-cols-sm-2 g-3 p-3">
+        <div class="col">
+          <div class="card shadow">
+            <div class="caseLabel">
+              <h3>
+                Total Death:
+                <span id="deathCaseCount">Loading</span>
+                <div>
+                  <span class="caseAddedLabel" id="addedDeathCase">+0</span>
+                  <h5 style="display: inline">
+                    <span> was added on </span>
+                    <span id="deathCasePrevDate"></span>
+                  </h5>
+                </div>
+              </h3>
+            </div>
+            <div class="canvasContainer">
+              <div class="show">
+                <div class="loading_animation"></div>
+              </div>
+              <canvas
+                class="my-4 w-100"
+                id="totalDeathChart"
+              ></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow">
+            <div class="caseLabel">
+              <h3>
+                Total Recovery:
+                <span id="recoveryCaseCount">Loading</span>
+                <div>
+                  <span class="caseAddedLabel" id="addedRecoveryCase">+0</span>
+                  <h5 style="display: inline">
+                    <span> was added on </span>
+                    <span id="recoveryCasePrevDate"></span>
+                  </h5>
+                </div>
+              </h3>
+            </div>
+            <div class="canvasContainer">
+              <div class="show">
+                <div class="loading_animation"></div>
+              </div>
+              <canvas
+                class="my-4 w-100"
+                id="totalRecoveryChart"
+              ></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
 </html>
 <!-- 
     COVID API 
     https://documenter.getpostman.com/view/10808728/SzS8rjbc#7934d316-f751-4914-9909-39f1901caeb8
 
 -->
+<!-- hiiiiiiiiiiiiiii-->
